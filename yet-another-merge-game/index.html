@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Yet another Merge Game...</title>
+
+    <link rel="stylesheet" href="css/utils.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/media.css" />
+    <link id="gamestyle" rel="stylesheet" href="css/style.standard.css" />
+
+    <meta charset="utf-8" />
+    <link rel="shortcut icon" href="favicon.ico" />
+    <meta name="theme-color" content="#2e99e6">
+    <meta name="title" content="Yet another Merge Game" />
+    <meta name="description" content="A Merge Game with various upgrades and prestige." />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <meta name="keywords" content="indie, game, idle, incremental, merge, merge game, yet, another, yamg" />
+    <meta name="url" content="https://veprogames.github.io/yet-another-merge-game/" />
+    <meta name="og:title" content="Yet another Merge Game" />
+    <meta name="og:type" content="website" />
+    <meta name="og:url" content="https://veprogames.github.io/yet-another-merge-game/" />
+    <meta name="og:description" content="A Merge Game with various upgrades and prestige." />
+    <meta name="og:image" content="https://veprogames.github.io/yet-another-merge-game/images/cover/cover2.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Yet another Merge Game" />
+    <meta name="twitter:description" content="A Merge Game with various upgrades and prestige." />
+    <meta name="twitter:image" content="https://veprogames.github.io/yet-another-merge-game/images/cover/cover2.png" />
+    <meta name="twitter:site" content="@veprogames" />
+    <meta name="twitter:creator" content="@veprogames" />
+</head>
+
+<body>
+    <div id="loading" class="overlay black">
+        <p>Preloading</p>
+    </div>
+    <div id="app">
+        <loading-screen :loading="loading"></loading-screen>
+
+        <game-header></game-header>
+
+        <div class="center">
+            <canvas ref="mergedisplay" id="mergedisplay" width="1024" height="768"
+                :class="{'tabs-shown': settings.tabsShown}"></canvas>
+        </div>
+        <div class="game-container-side left" :class="{'tabs-shown': settings.tabsShown}">
+            <tab-container></tab-container>
+        </div>
+        <div class="game-container-side right" :class="{'tabs-shown': settings.tabsShown}">
+            <utility-container></utility-container>
+        </div>
+
+        <div class="game-container" :class="{'tabs-shown': settings.tabsShown}">
+            <button class="toggle-tabs with-icon" @click="settings.tabsShown = !settings.tabsShown"><img alt="X"
+                    src="images/icons/close.svg" /></button>
+            <span>Click to Hide / Show</span>
+
+            <tab-upgrades v-if="settings.currentTab === 'upgrades'"></tab-upgrades>
+            <tab-prestige v-if="settings.currentTab === 'prestige'"></tab-prestige>
+            <keep-alive>
+                <mergepedia v-if="settings.currentTab === 'mergepedia'"></mergepedia>
+            </keep-alive>
+            <tab-energy-cores v-if="settings.currentTab === 'energycores'"></tab-energy-cores>
+            <tab-quantum-processors v-if="settings.currentTab === 'quantumprocessor'"></tab-quantum-processors>
+            <tab-isotopes class="center" v-if="settings.currentTab === 'isotopes'"></tab-isotopes>
+            <tab-molecules v-if="settings.currentTab === 'molecules'"></tab-molecules>
+            <tab-settings v-if="settings.currentTab === 'settings'"></tab-settings>
+            <keep-alive>
+                <tab-help v-if="settings.currentTab === 'help'"></tab-help>
+            </keep-alive>
+        </div>
+    </div>
+
+    <script src="js/lib/vue.js"></script>
+    <script type="text/javascript" src="js/lib/break-infinity.min.js"></script>
+    <script type="text/javascript" src="js/lib/adnotations.min.js"></script>
+    <script type="text/javascript" src="js/lib/adcommunitynotations.min.js"></script>
+
+    <script src="js/utils.js"></script>
+    <script src="js/classes/random.js"></script>
+
+    <script src="js/filters.js"></script>
+
+    <script src="js/classes/save-manager.js"></script>
+    <script src="js/classes/input-manager.js"></script>
+    <script src="js/classes/floatingtext.js"></script>
+    <script src="js/classes/image-particle.js"></script>
+    <script src="js/classes/mergeobject.js"></script>
+    <script src="js/classes/upgrade.js"></script>
+    <script src="js/classes/energycore.js"></script>
+    <script src="js/classes/processorcore.js"></script>
+    <script src="js/classes/molecule.js"></script>
+
+    <script src="js/classes/content/content-matter.js"></script>
+    <script src="js/classes/content/content-prestige.js"></script>
+    <script src="js/classes/content/content-energy-cores.js"></script>
+    <script src="js/classes/content/content-quantum-processors.js"></script>
+    <script src="js/classes/content/content-isotopes.js"></script>
+    <script src="js/classes/content/content-molecules.js"></script>
+
+    <script src="js/classes/canvas-utils.js"></script>
+    <script src="js/classes/game-background.js"></script>
+    <script src="js/classes/resource-display.js"></script>
+
+    <script src="js/components/loading-screen.js"></script>
+    <script src="js/components/game-header.js"></script>
+    <script src="js/components/merger.js"></script>
+    <script src="js/components/mergepedia-entry.js"></script>
+    <script src="js/components/mergepedia.js"></script>
+    <script src="js/components/energy-core.js"></script>
+    <script src="js/components/processor-core.js"></script>
+    <script src="js/components/molecule.js"></script>
+    <script src="js/components/upgrades/upgrade-row.js"></script>
+    <script src="js/components/tab-container.js"></script>
+    <script src="js/components/utility-container.js"></script>
+    <script src="js/components/tabs/tab-upgrades.js"></script>
+    <script src="js/components/tabs/tab-prestige.js"></script>
+    <script src="js/components/tabs/tab-energy-cores.js"></script>
+    <script src="js/components/tabs/tab-quantum-processors.js"></script>
+    <script src="js/components/tabs/tab-isotopes.js"></script>
+    <script src="js/components/tabs/tab-molecules.js"></script>
+    <script src="js/components/tabs/tab-settings.js"></script>
+    <script src="js/components/tabs/tab-help.js"></script>
+
+    <script src="js/data.js"></script>
+    <script src="js/functions.js"></script>
+    <script src="js/main.js"></script>
+</body>
+
+</html>
