@@ -24,11 +24,11 @@ var app = new Vue({
 
 function onCreate()
 {
-    for(let i = 0; i < 11; i++)
+    for(let i = 0; i < 24; i++)
     {
-        let bp = Decimal.pow(10, i).mul(Decimal.pow(10, Math.pow(1.5, Math.max(0, i - 5))));
-        game.shrinkers.push(new Shrinker("Matter Condenser " + "αβγδεζηθικλ"[i], bp,
-            new Decimal(1.5 + i), bp.div(new Decimal(10).mul(Decimal.pow(2, i))), new Decimal(1 + 0.0005 * (i * 0.5 + 1))));
+        let bp = Decimal.pow(10, i).mul(Decimal.pow(10, Math.pow(2, Math.max(0, i - 5))));
+        game.shrinkers.push(new Shrinker("Matter Condenser " + "αβγδεζηθικλμνξοπρστυφχψω"[i], bp,
+            new Decimal(Decimal.pow(1.5, i + 1)), bp.div(new Decimal(10).mul(Decimal.pow(2, i))), new Decimal(1 + 0.0005 * (i * 0.4 + 1))));
     }
     initialGame = functions.getSaveCode();
 
@@ -74,7 +74,7 @@ function update()
     }
 
     saveTimer += dt;
-    if(saveTimer > 30)
+    if(saveTimer > 15)
     {
         saveTimer = 0;
         functions.saveGame();

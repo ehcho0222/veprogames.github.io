@@ -20,17 +20,17 @@ let game = {
     canEnterNextCountry: false,
     playerMarket: new PlayerMarket(),
     moneyUpgrades:{
-        matchSpeed: new MoneyUpgrade(level => Decimal.pow(3, level).mul(10000),
-            level => 300 * (320 / 300) ** level, {
+        matchSpeed: new MoneyUpgrade(level => Decimal.pow(3, level).mul(1),
+            level => 300 * (340 / 300) ** level, {
                 maxLevel: 12
             }),
         //-> 9x money per division, ~11x player price per division
-        matchRewards: new MoneyUpgrade(level => Decimal.pow(9, level / 4).mul(100000),
-            level => (9 / 6) ** (level / 4)),
-        cheaperPlayers: new MoneyUpgrade(level => Decimal.pow(7, level / 3).mul(1000000),
-            level => 1 / 1.02 ** level),
-        playerRegeneration: new MoneyUpgrade(level => Decimal.pow(1.25, level).mul(5000000),
-            level => new Decimal(1 + 0.05 * level), {
+        matchRewards: new MoneyUpgrade(level => Decimal.pow(9, level / 4).mul(1),
+            level => (28 / 6) ** (level / 4)),
+        cheaperPlayers: new MoneyUpgrade(level => Decimal.pow(7, level / 3).mul(1),
+            level => 1 / 1.10** level),
+        playerRegeneration: new MoneyUpgrade(level => Decimal.pow(1.25, level).mul(1),
+            level => new Decimal(1 + 1.00 * level), {
                 getEffectDisplay: effectDisplayTemplates.percentStandard(0)
             })
     },

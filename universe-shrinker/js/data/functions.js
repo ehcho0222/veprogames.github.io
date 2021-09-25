@@ -57,12 +57,61 @@ var functions = {
     {
         let pl = PLANCK_LENGTH;
         let ly = new Decimal(9.46e15);
-        if(n.lt(pl.mul(1e9)))
+		let au = new Decimal(1.5e11);
+        if(n.lt(pl.mul(1e9))) // smaller than 1 billion planck lengths
         {
             let unit = n.eq(pl) ? "Planck Length" : "Planck Lengths";
             return this.formatNumber(n.div(pl), prec, prec, 1e9) + " " + unit;
         }
-        else if(n.gte(ly.div(10)))
+		else if (n.lt(1e-21)) // smaller than 1 zeptometer
+		{
+			return this.formatNumber(n.div(1e-24), prec, prec) + " ym";
+		}
+		else if (n.lt(1e-18)) // smaller than 1 attometer
+		{
+			return this.formatNumber(n.div(1e-21), prec, prec) + " zm";
+		}
+		else if (n.lt(1e-15)) // smaller than 1 femtometer
+		{
+			return this.formatNumber(n.div(1e-18), prec, prec) + " am";
+		}
+		else if (n.lt(1e-12)) // smaller than 1 picometer
+		{
+			return this.formatNumber(n.div(1e-15), prec, prec) + " fm";
+		}
+		else if (n.lt(1e-9)) // smaller than 1 nanometer
+		{
+			return this.formatNumber(n.div(1e-12), prec, prec) + " pm";
+		}
+		else if (n.lt(1e-6)) // smaller than 1 micrometer
+		{
+			return this.formatNumber(n.div(1e-9), prec, prec) + " nm";
+		}
+		else if (n.lt(1e-3)) // smaller than 1 millimeter
+		{
+			return this.formatNumber(n.div(1e-6), prec, prec) + " μm";
+		}
+		else if (n.lt(1)) // smaller than 1 meter
+		{
+			return this.formatNumber(n.div(1e-3), prec, prec) + " mm";
+		}
+		else if (n.lt(1e3)) // smaller than 1 kilometer
+		{
+			return this.formatNumber(n.div(1), prec, prec) + " m";
+		}
+		else if (n.lt(1e6)) // smaller than 1 megameter
+		{
+			return this.formatNumber(n.div(1e3), prec, prec) + " km";
+		}
+		else if (n.lt(1e9)) // smaller than 1 gigameter
+		{
+			return this.formatNumber(n.div(1e6), prec, prec) + " Mm";
+		}
+		else if (n.lt(ly.div(10))) // smaller than 0.1 light-year
+		{
+			return this.formatNumber(n.div(au), prec, prec) + " AU";
+		}
+        else if(n.gte(ly.div(10))) // larger than 0.1 light-year
         {
             return this.formatNumber(n.div(ly), prec, prec, 1e9) + " Ly";
         }

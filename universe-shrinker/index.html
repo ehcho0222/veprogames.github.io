@@ -38,7 +38,7 @@
         <div v-if="settings.tab === 'options'">
             <notation-select></notation-select>
             <theme-select></theme-select>
-            <div class="option" v-if="resources['Multiverse']">
+            <div class="option" v-if="resources['Universe Supercluster']">
                 <label>
                     <input type="checkbox" v-model="settings.maxAllLayers"/> <span>Max All Universe Layers instead of the current selected</span>
                 </label>
@@ -50,7 +50,7 @@
             </div>
             <div class="saving">
                 <button @click="saveGame()">Save Game</button>
-                <p>The Game saves automatically every 30 seconds, but you can save manually to go really sure.</p>
+                <p>The Game saves automatically every 15 seconds, but you can save manually to go really sure.</p>
             </div>
             <div class="export">
                 <div class="buttons">

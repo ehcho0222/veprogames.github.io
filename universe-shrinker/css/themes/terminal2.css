@@ -1,0 +1,11 @@
+:root{
+    --color-background: #ffffff;
+    --color-primary: #404040;
+    --color-hover: #e0e0e0;
+    --color-contrast: #000000;
+    --color-link: #c08000;
+}
+
+*, body, html{
+    font-family: "Lucida Console", monospace;
+}

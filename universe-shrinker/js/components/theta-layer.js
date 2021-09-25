@@ -103,7 +103,7 @@ Vue.component("theta-layer", {
     <button @click="prestige()" :disabled="getPrestigeAmount().lt(1)">
         <span v-if="totalOmniverse().gt(1024)">Heat Death everything and gain<br/>
         {{formatNumber(getPrestigeAmount(), 2, 2, 1e9)}} &theta;<sub>E</sub></span>
-        <span v-else>You need to shrink a total of 1.024 Omniverses to Heat Death<br/>({{formatNumber(totalOmniverse(), 2, 0)}} / 1.024)</span></button>
+        <span v-else>You need to shrink a total of 1,024 Omniverses to Heat Death<br/>({{formatNumber(totalOmniverse(), 2, 0)}} / 1,024)</span></button>
     <p>Heat Death resets all progress you made so far, but you will get &theta;<sub>E</sub> in return.</p>
 </div>
 <p>Buying Theta Upgrades will increase the Price of several other Theta Upgrades. Choose wisely!</p>

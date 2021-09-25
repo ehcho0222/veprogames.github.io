@@ -1,6 +1,8 @@
 var game = {
     universes: [new Universe("Universe", new Decimal(8.37e26), new Decimal(1)),
-        new Universe("Multiverse", new Decimal(4.73e294), new Decimal(2)),
+        new Universe("Universe Supercluster", new Decimal(1.68e269), new Decimal(2)),
+		new Universe("Multiverse", new Decimal("2.31e1615"), new Decimal(25)),
+		new Universe("Kiloverse", new Decimal("7.64e1976"), new Decimal(25)),
         new Universe("Megaverse", new Decimal("7.64e1976"), new Decimal(25)),
         new Universe("Gigaverse", new Decimal("8.02e7435"), new Decimal(5e4)),
         new Universe("Teraverse", new Decimal("1.46e34865"), new Decimal(2e9)),
@@ -17,24 +19,24 @@ var game = {
     resources: {},
     rhoUpgrades: {
         rhoBoost: new RhoUpgrade("Rho Boost", "All Generators produce more Rho-Particles",
-            level => new Decimal(1000).mul(Decimal.pow(16, level)),
-            level => Decimal.pow(1.5, level)),
+            level => new Decimal(1000).mul(Decimal.pow(20, level)),
+            level => Decimal.pow(Decimal.pow(2, 0.5), level)),
         shrinkBoost: new RhoUpgrade("Shrink Boost", "All Generators Shrink faster",
-            level => new Decimal(10000).mul(Decimal.pow(16, level)),
-            level => new Decimal(1 + 0.05 * level), {
+            level => new Decimal(10000).mul(Decimal.pow(20, level)),
+            level => new Decimal(1 + 0.03125 * level), {
                 getEffectDisplay: effectDisplayTemplates.numberStandard(2, "^")
             }),
         shrinkingExpertise: new RhoUpgrade("Shrinking Expertise", "All Generators are stronger based on how far you shrunk the Universe",
-            level => new Decimal(10e6).mul(Decimal.pow(1e3, level)),
+            level => new Decimal(1e6).mul(Decimal.pow(1e4, level)),
             level => new Decimal(1 + (game.universe.getShrinksPS() < 10 ? game.universe.getShrinkProgress() : 1) * level)),
         synergyRho: new RhoUpgrade("Rho Synergy", "All Generators are stronger based on total Generator Levels",
-            level => new Decimal(1e10).mul(Decimal.pow(1e4, level)),
-            level => Decimal.pow(1 + 0.003 * Math.sqrt(level), functions.totalShrinkersBought()), {
-                maxLevel: 5
+            level => new Decimal(1e8).mul(Decimal.pow(1e5, level)),
+            level => Decimal.pow(1 + 0.0015625 * Math.sqrt(level), functions.totalShrinkersBought()), {
+                maxLevel: 10
             }),
         synergyShrink: new RhoUpgrade("Shrink Synergy", "All Generators Shrink stronger based on total Generator Levels",
-            level => new Decimal(1e15).mul(Decimal.pow(1e4, level)),
-            level => new Decimal(1 + 0.0002 * level * functions.totalShrinkersBought()),{
+            level => new Decimal(1e10).mul(Decimal.pow(1e6, level)),
+            level => new Decimal(1 + 0.000125 * level * functions.totalShrinkersBought()),{
                 maxLevel: 10,
                 getEffectDisplay: effectDisplayTemplates.numberStandard(4, "^")
             })

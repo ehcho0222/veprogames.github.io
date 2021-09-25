@@ -3,7 +3,7 @@ Vue.component("theme-select",{
     {
         return {
             themes: [["light.css", "Light"], ["dark.css", "Dark"], ["dark2.css", "Dark (Variation)"], ["darkblue.css", "Dark Blue"], ["highcontrast.css", "High Contrast"],
-                ["terminal.css", "Terminal"], ["beautiful.css", "Beautiful (truly)"]]
+                ["terminal.css", "Terminal"], ["terminal2.css", "Light Terminal"], ["orange.css", "Orange"], ["chocolate.css", "Chocolate"], ["beautiful.css", "Beautiful (truly)"]]
         }
     },
     methods:{
